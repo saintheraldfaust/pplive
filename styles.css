@@ -1,0 +1,259 @@
+/* Hacker Terminal Style */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Courier New', monospace;
+    background-color: #000;
+    color: #00ff00;
+    line-height: 1.6;
+    padding: 20px;
+}
+
+.terminal {
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: #111;
+    border: 2px solid #00ff00;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0, 255, 0, 0.3);
+}
+
+.header {
+    background-color: #222;
+    padding: 15px;
+    border-bottom: 1px solid #00ff00;
+    font-size: 14px;
+}
+
+.green {
+    color: #00ff00;
+    font-weight: bold;
+}
+
+.content {
+    padding: 30px;
+}
+
+h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    text-align: center;
+    color: #00ff00;
+    text-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
+}
+
+.tagline {
+    text-align: center;
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+    color: #00aa00;
+}
+
+.features h2,
+.pricing h2,
+.demo h2,
+.contact h2 {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    color: #00ff00;
+    border-bottom: 1px solid #00ff00;
+    padding-bottom: 10px;
+}
+
+.features ul {
+    list-style: none;
+    padding: 0;
+}
+
+.features li {
+    margin-bottom: 15px;
+    padding: 10px;
+    background-color: #222;
+    border-left: 3px solid #00ff00;
+}
+
+.features strong {
+    color: #00ff00;
+}
+
+.pricing {
+    margin: 40px 0;
+}
+
+.plans {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.plan {
+    background-color: #222;
+    border: 1px solid #333;
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+    min-width: 200px;
+    transition: all 0.3s;
+}
+
+.plan:hover {
+    border-color: #00ff00;
+    box-shadow: 0 0 10px rgba(0, 255, 0, 0.3);
+}
+
+.plan.featured {
+    border-color: #ff6600;
+    box-shadow: 0 0 15px rgba(255, 102, 0, 0.3);
+}
+
+.plan h3 {
+    color: #00ff00;
+    margin-bottom: 10px;
+}
+
+.price {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #00ff00;
+    margin-bottom: 10px;
+}
+
+.plan p {
+    color: #aaa;
+    margin-bottom: 15px;
+}
+
+button {
+    background-color: #00ff00;
+    color: #000;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: 'Courier New', monospace;
+    font-weight: bold;
+    transition: all 0.3s;
+}
+
+button:hover {
+    background-color: #00aa00;
+    box-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
+}
+
+.demo {
+    margin: 40px 0;
+}
+
+.demo > p {
+    color: #9be49b;
+    margin-bottom: 18px;
+}
+
+.demo-featured {
+    display: grid;
+    grid-template-columns: 1.35fr 1fr;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.demo-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+}
+
+.demo-card {
+    background-color: #181818;
+    border: 1px solid #244424;
+    border-radius: 10px;
+    padding: 14px;
+    box-shadow: inset 0 0 0 1px rgba(0, 255, 0, 0.05);
+}
+
+.featured-media {
+    border-color: #00ff00;
+    box-shadow: 0 0 18px rgba(0, 255, 0, 0.18);
+}
+
+.demo-card-header {
+    color: #00ff00;
+    font-weight: bold;
+    margin-bottom: 10px;
+    font-size: 1rem;
+}
+
+.demo-video,
+.demo-image {
+    width: 100%;
+    display: block;
+    border-radius: 8px;
+    border: 1px solid #2c662c;
+    background: #000;
+}
+
+.hero-video {
+    min-height: 320px;
+}
+
+.demo-image {
+    object-fit: cover;
+}
+
+.demo-caption {
+    color: #9a9a9a;
+    margin-top: 10px;
+    font-size: 0.95rem;
+}
+
+.screenshot-card .demo-image {
+    min-height: 320px;
+}
+
+.contact {
+    margin: 40px 0;
+}
+
+.contact p {
+    margin-bottom: 10px;
+    color: #aaa;
+}
+
+.footer {
+    background-color: #222;
+    padding: 15px;
+    border-top: 1px solid #00ff00;
+    font-size: 14px;
+    text-align: center;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .plans {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .demo-featured,
+    .demo-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .plan {
+        min-width: 100%;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    .hero-video,
+    .screenshot-card .demo-image {
+        min-height: 220px;
+    }
+}
