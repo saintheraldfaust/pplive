@@ -276,7 +276,7 @@ function App() {
                 <div>
                   <strong>Download the App</strong>
                   <p>Click below to download Chimera-Lite-1.0.0-Portable.exe</p>
-                  <a href="./Chimera-Lite-1.0.0-Portable.exe" download className="download-link">📥 Download EXE</a>
+                  <a href="https://github.com/saintheraldfaust/pplive/releases/download/v1.0.0/Chimera-Lite-1.0.0-Portable.exe" download className="download-link">📥 Download EXE</a>
                 </div>
               </div>
               <div className="step">
