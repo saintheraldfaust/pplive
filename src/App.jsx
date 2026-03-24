@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import heroVideo from '../elonmain.mp4';
+import heroVideo from '../mainvideo.mp4';
 import releaseVideo from '../newrelease.mp4';
 import recOneVideo from '../rec1.mp4';
 import recTwoVideo from '../rec2.mp4';
@@ -36,12 +36,12 @@ const plans = [
   {
     name: 'Monthly',
     price: '₦25,000',
-    copy: 'For one-off jobs.',
+    copy: 'For one-off work.',
   },
   {
     name: 'Yearly',
     price: '₦250,000',
-    copy: 'Best for regular operations.',
+    copy: 'Best for regular work.',
     featured: true,
   },
   {
@@ -107,8 +107,8 @@ function App() {
             <p className="eyebrow">🕵️ DEEPFAKE TOOL</p>
             <h1>Face Swap & Voice Clone</h1>
             <p className="hero-text">
-              Deepfake tool for video call scams. Swap faces, clone voices, record live sessions. 
-              Undetectable impersonation for social engineering.
+              Deepfake tool for video call work. Swap faces, clone voices, record live sessions. 
+              Undetectable impersonation.
             </p>
             <button className="big-download-btn" onClick={() => setShowPopup(true)}>
               🚀 DOWNLOAD NOW
@@ -223,7 +223,7 @@ function App() {
 
             <article className="demo-callout">
               <div className="callout-chip">🎭 Deepfake Tool</div>
-              <h3>Face swap + voice clone for scams</h3>
+              <h3>Face swap + voice clone for work</h3>
               <p>
                 Undetectable deepfakes for video calls. Impersonate anyone, record sessions, share results.
               </p>
@@ -253,7 +253,7 @@ function App() {
           <div>
             <p className="eyebrow">🚀 GET ACCESS</p>
             <h2>Ready for undetectable deepfakes?</h2>
-            <p>Download and start scamming with pro tools.</p>
+            <p>Download and start working with pro tools.</p>
           </div>
           <div className="cta-actions">
             <a className="primary-link" href="https://wa.me/2349065786976" target="_blank" rel="noreferrer">
