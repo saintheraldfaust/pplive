@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import heroVideo from '../elonmain.mp4';
 import releaseVideo from '../newrelease.mp4';
 import recOneVideo from '../rec1.mp4';
@@ -6,28 +7,28 @@ import appScreenshot from '../Screenshot 2026-03-23 224628.png';
 
 const features = [
   {
-    title: 'Realtime face performance',
-    body: 'Run hosted face-swap sessions with creator-friendly controls built for live demos and rehearsed performances.',
+    title: '🔄 Real-time Face Swap',
+    body: 'Swap faces instantly in video calls for perfect impersonation.',
   },
   {
-    title: 'Voice preset workflows',
-    body: 'Browse curated voice options, generate spoken lines, and prepare delivery before you go live.',
+    title: '🎤 Voice Cloning',
+    body: 'Clone any voice to sound exactly like the target.',
   },
   {
-    title: 'LipSync Studio',
-    body: 'Generate speech with teleprompter timing so recorded takes and call rehearsals stay tight and consistent.',
+    title: '📹 Call Recording',
+    body: 'Record live deepfake videos and perform any actions and share.',
   },
   {
-    title: 'Session recording',
-    body: 'Capture output locally, save polished clips, and keep a reusable archive of demos, tutorials, and promos.',
+    title: '⚡ Runs on Any Laptop',
+    body: 'No high-end GPU needed - works on basic hardware.',
   },
   {
-    title: 'OBS-ready output',
-    body: 'Mirror the processed feed into OBS for streaming, screen capture, walkthroughs, and presentation setups.',
+    title: '🌍 Optimized for White Faces',
+    body: 'Best results for impersonating foreigners.',
   },
   {
-    title: 'Hosted GPU workflow',
-    body: 'Use the cloud pipeline instead of relying on a high-end local GPU, so setup stays lightweight on client machines.',
+    title: '🎭 Clone Any Face',
+    body: 'Use photos of anyone for face swapping.',
   },
 ];
 
@@ -35,56 +36,58 @@ const plans = [
   {
     name: 'Monthly',
     price: '₦25,000',
-    copy: 'Best for short campaigns, testing, and trial workflows.',
+    copy: 'For one-off jobs.',
   },
   {
     name: 'Yearly',
     price: '₦250,000',
-    copy: 'Best value for teams running consistent sessions all year.',
+    copy: 'Best for regular operations.',
     featured: true,
   },
   {
     name: 'Lifetime',
     price: '₦700,000',
-    copy: 'One-time purchase for long-term access and updates.',
+    copy: 'Buy once, use forever.',
   },
 ];
 
 const demos = [
   {
-    title: 'Main demo',
+    title: 'Face Swap Demo',
     media: heroVideo,
     type: 'video',
     featured: true,
-    caption: 'Hosted realtime output running through the Purplefinger desktop workflow.',
+    caption: 'Real-time face swap in action.',
   },
   {
-    title: 'Interface screenshot',
+    title: 'App Interface',
     media: appScreenshot,
     type: 'image',
-    caption: 'Full control view showing session, recording, and voice tools in one place.',
+    caption: 'Simple controls for deepfake operations.',
   },
   {
-    title: 'New release',
+    title: 'Recording Demo',
     media: releaseVideo,
     type: 'video',
-    caption: 'Latest release pass with updated workflow and refined UI.',
+    caption: 'Demo recording',
   },
   {
-    title: 'Recording demo 01',
+    title: 'Recording Demo',
     media: recOneVideo,
     type: 'video',
-    caption: 'Saved output preview showing recording and playback quality.',
+    caption: 'Record live deepfake videos.',
   },
   {
-    title: 'Recording demo 02',
+    title: 'More Demos',
     media: recTwoVideo,
     type: 'video',
-    caption: 'Additional recorded example from a different performance flow.',
+    caption: 'Additional deepfake examples.',
   },
 ];
 
 function App() {
+  const [showPopup, setShowPopup] = useState(false);
+
   const [featuredDemo, screenshotDemo, ...gridDemos] = demos;
 
   return (
@@ -96,43 +99,38 @@ function App() {
           <span className="terminal-pill online" />
           <span className="terminal-pill idle" />
           <span className="terminal-pill warn" />
-          <span className="terminal-label">root@purplefinger:~# launch project-purplefinger</span>
+          <span className="terminal-label">root@pf:~# purplefingerlive</span>
         </div>
 
         <div className="hero-grid">
           <div className="hero-copy">
-            <p className="eyebrow">CREATOR PERFORMANCE SUITE</p>
-            <h1>Project Purplefinger</h1>
+            <p className="eyebrow">🕵️ DEEPFAKE TOOL</p>
+            <h1>Face Swap & Voice Clone</h1>
             <p className="hero-text">
-              A hosted realtime studio for face performance demos, voice presets, lip-sync prep,
-              session recording, and OBS-ready output.
+              Deepfake tool for video call scams. Swap faces, clone voices, record live sessions. 
+              Undetectable impersonation for social engineering.
             </p>
-            <div className="hero-actions">
-              <a className="primary-link" href="https://wa.me/2349065786976" target="_blank" rel="noreferrer">
-                Request Access
-              </a>
-              <a className="secondary-link" href="#demo">
-                Watch Demo
-              </a>
-            </div>
+            <button className="big-download-btn" onClick={() => setShowPopup(true)}>
+              🚀 DOWNLOAD NOW
+            </button>
             <div className="hero-metrics">
               <div>
-                <strong>Hosted GPU</strong>
-                <span>Remote pipeline, local control</span>
+                <strong>⚡ Real-time</strong>
+                <span>Instant face swaps in calls</span>
               </div>
               <div>
-                <strong>Desktop app</strong>
-                <span>Recording, voice tools, OBS output</span>
+                <strong>🎤 Voice Clone</strong>
+                <span>Accurate voice matching</span>
               </div>
               <div>
-                <strong>Fast onboarding</strong>
-                <span>Product-key access and guided setup</span>
+                <strong>💻 Any Laptop</strong>
+                <span>No GPU required</span>
               </div>
             </div>
           </div>
 
           <div className="hero-media card">
-            <div className="card-label">Featured workflow preview</div>
+            <div className="card-label">Live Demo</div>
             <video className="media-frame hero-video" controls muted playsInline preload="metadata">
               <source src={featuredDemo.media} type="video/mp4" />
             </video>
@@ -141,11 +139,45 @@ function App() {
         </div>
       </header>
 
+      {showPopup && (
+        <div className="popup-overlay" onClick={() => setShowPopup(false)}>
+          <div className="popup-content" onClick={(e) => e.stopPropagation()}>
+            <h2>🚀 Get Started with Deepfake Tool</h2>
+            <div className="steps">
+              <div className="step">
+                <span className="step-number">1</span>
+                <div>
+                  <strong>Download the EXE</strong>
+                  <p>Download Chimera-Lite-1.0.0-Portable.exe</p>
+                  <a href="https://github.com/saintheraldfaust/purplefinger/releases/download/v1.0.0/Chimera-Lite-1.0.0-Portable.exe" className="download-link">📥 Download EXE</a>
+                </div>
+              </div>
+              <div className="step">
+                <span className="step-number">2</span>
+                <div>
+                  <strong>Get Product Key</strong>
+                  <p>Contact Saint H. on WhatsApp for video product key</p>
+                  <a href="https://wa.me/2349065786976" target="_blank" rel="noreferrer" className="whatsapp-link">📱 WhatsApp Saint H.</a>
+                </div>
+              </div>
+              <div className="step">
+                <span className="step-number">3</span>
+                <div>
+                  <strong>Install & Login</strong>
+                  <p>Install the software and use the product key to login</p>
+                </div>
+              </div>
+            </div>
+            <button className="close-popup" onClick={() => setShowPopup(false)}>Close</button>
+          </div>
+        </div>
+      )}
+
       <main className="content-stack">
         <section className="card section-block">
           <div className="section-heading">
-            <p className="eyebrow">CORE CAPABILITIES</p>
-            <h2>Built for demos, rehearsals, and polished delivery</h2>
+            <p className="eyebrow">🔥 FEATURES</p>
+            <h2>Why this deepfake tool is essential</h2>
           </div>
           <div className="feature-grid">
             {features.map((feature) => (
@@ -159,8 +191,8 @@ function App() {
 
         <section className="card section-block pricing-block">
           <div className="section-heading">
-            <p className="eyebrow">ACCESS PLANS</p>
-            <h2>Simple pricing for individual creators and teams</h2>
+            <p className="eyebrow">💰 PRICING</p>
+            <h2>Choose your access level</h2>
           </div>
           <div className="pricing-grid">
             {plans.map((plan) => (
@@ -169,7 +201,7 @@ function App() {
                 <div className="pricing-price">{plan.price}</div>
                 <p className="pricing-copy">{plan.copy}</p>
                 <a className="plan-link" href="https://wa.me/2349065786976" target="_blank" rel="noreferrer">
-                  Talk to Saint H.
+                  Buy Now 🛒
                 </a>
               </article>
             ))}
@@ -178,28 +210,28 @@ function App() {
 
         <section className="card section-block" id="demo">
           <div className="section-heading">
-            <p className="eyebrow">DEMO GALLERY</p>
-            <h2>Preview the interface, recordings, and release flow</h2>
+            <p className="eyebrow">📸 DEMOS</p>
+            <h2>See the tool in action</h2>
           </div>
 
           <div className="demo-featured-grid">
             <article className="demo-card large">
-              <div className="card-label">App interface</div>
-              <img className="media-frame screenshot" src={screenshotDemo.media} alt="Project Purplefinger application screenshot" />
+              <div className="card-label">App Screenshot</div>
+              <img className="media-frame screenshot" src={screenshotDemo.media} alt="Deepfake tool interface" />
               <p>{screenshotDemo.caption}</p>
             </article>
 
             <article className="demo-callout">
-              <div className="callout-chip">Desktop + Hosted Workflow</div>
-              <h3>One workspace for setup, recording, voice prep, and session control</h3>
+              <div className="callout-chip">🎭 Deepfake Tool</div>
+              <h3>Face swap + voice clone for scams</h3>
               <p>
-                The website is now structured as a deployable React app for Netlify, while the product demos still showcase the existing media assets and desktop interface.
+                Undetectable deepfakes for video calls. Impersonate anyone, record sessions, share results.
               </p>
               <ul>
-                <li>Vite + React frontend</li>
-                <li>Netlify-ready build config</li>
-                <li>Responsive media cards</li>
-                <li>Safer creator-focused positioning</li>
+                <li>🔄 Real-time face swapping</li>
+                <li>🎤 Voice spoofing</li>
+                <li>📹 Live recording</li>
+                <li>⚡ No GPU required</li>
               </ul>
             </article>
           </div>
@@ -219,20 +251,54 @@ function App() {
 
         <section className="cta-strip">
           <div>
-            <p className="eyebrow">GET STARTED</p>
-            <h2>Need a deployable product page and demo-ready app workflow?</h2>
-            <p>Reach out for onboarding, pricing, or deployment support.</p>
+            <p className="eyebrow">🚀 GET ACCESS</p>
+            <h2>Ready for undetectable deepfakes?</h2>
+            <p>Download and start scamming with pro tools.</p>
           </div>
           <div className="cta-actions">
             <a className="primary-link" href="https://wa.me/2349065786976" target="_blank" rel="noreferrer">
-              WhatsApp Saint H.
+              Contact 📱
             </a>
             <a className="secondary-link" href="mailto:saintheraldfaust@gmail.com">
-              Email Contact
+              Email 💌
             </a>
           </div>
         </section>
       </main>
+
+      {showPopup && (
+        <div className="popup-overlay" onClick={() => setShowPopup(false)}>
+          <div className="popup-content" onClick={(e) => e.stopPropagation()}>
+            <h2>🚀 Get Started with Deepfake Tool</h2>
+            <div className="steps">
+              <div className="step">
+                <span className="step-number">1</span>
+                <div>
+                  <strong>Download the App</strong>
+                  <p>Click below to download Chimera-Lite-1.0.0-Portable.exe</p>
+                  <a href="./Chimera-Lite-1.0.0-Portable.exe" download className="download-link">📥 Download EXE</a>
+                </div>
+              </div>
+              <div className="step">
+                <span className="step-number">2</span>
+                <div>
+                  <strong>Get Product Key</strong>
+                  <p>Contact Saint H on WhatsApp for your video product key.</p>
+                  <a href="https://wa.me/2349065786976" target="_blank" rel="noreferrer" className="whatsapp-link">📱 WhatsApp Saint H</a>
+                </div>
+              </div>
+              <div className="step">
+                <span className="step-number">3</span>
+                <div>
+                  <strong>Install & Login</strong>
+                  <p>Install the app and use the product key to login.</p>
+                </div>
+              </div>
+            </div>
+            <button className="close-popup" onClick={() => setShowPopup(false)}>✕ Close</button>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
