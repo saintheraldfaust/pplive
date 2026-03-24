@@ -131,7 +131,7 @@ function App() {
 
           <div className="hero-media card">
             <div className="card-label">Live Demo</div>
-            <video className="media-frame hero-video" controls muted playsInline preload="metadata">
+            <video className="media-frame hero-video" autoPlay muted playsInline preload="metadata">
               <source src={featuredDemo.media} type="video/mp4" />
             </video>
             <p>{featuredDemo.caption}</p>
