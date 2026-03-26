@@ -131,7 +131,7 @@ function App() {
 
           <div className="hero-media card">
             <div className="card-label">Live Demo</div>
-            <video className="media-frame hero-video" autoPlay muted playsInline preload="metadata">
+            <video className="media-frame hero-video" autoPlay muted loop playsInline preload="metadata">
               <source src={featuredDemo.media} type="video/mp4" />
             </video>
             <p>{featuredDemo.caption}</p>
@@ -275,8 +275,8 @@ function App() {
                 <span className="step-number">1</span>
                 <div>
                   <strong>Download the App</strong>
-                  <p>Click below to download Chimera-Lite-1.0.0-Portable.exe</p>
-                  <a href="https://github.com/saintheraldfaust/pplive/releases/download/v1.0.0/Chimera-Lite-1.0.0-Portable.exe" download className="download-link">📥 Download EXE</a>
+                  <p>Click below to download Chimera.exe</p>
+                  <a href="https://github.com/saintheraldfaust/pplive/releases/download/v1.0.1/Chimera-Lite-1.0.1-Setup.exe" download className="download-link">📥 Download EXE</a>
                 </div>
               </div>
               <div className="step">
