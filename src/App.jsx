@@ -156,8 +156,8 @@ function App() {
                 <span className="step-number">2</span>
                 <div>
                   <strong>Get Product Key</strong>
-                  <p>Contact Saint H. on WhatsApp for video product key</p>
-                  <a href="https://wa.me/2349065786976" target="_blank" rel="noreferrer" className="whatsapp-link">📱 WhatsApp Saint H.</a>
+                  <p>Contact Purplefinger Support on Telegram for a product key</p>
+                  <a href="http://t.me/PurpleFsupport" target="_blank" rel="noreferrer" className="whatsapp-link">✈️ Message Support on Telegram</a>
                 </div>
               </div>
               <div className="step">
@@ -200,7 +200,7 @@ function App() {
                 <p className="pricing-name">{plan.name}</p>
                 <div className="pricing-price">{plan.price}</div>
                 <p className="pricing-copy">{plan.copy}</p>
-                <a className="plan-link" href="https://wa.me/2349065786976" target="_blank" rel="noreferrer">
+                <a className="plan-link" href="http://t.me/PurpleFsupport" target="_blank" rel="noreferrer">
                   Buy Now 🛒
                 </a>
               </article>
@@ -256,11 +256,11 @@ function App() {
             <p>Download and start working with pro tools.</p>
           </div>
           <div className="cta-actions">
-            <a className="primary-link" href="https://wa.me/2349065786976" target="_blank" rel="noreferrer">
-              Contact 📱
+            <a className="primary-link" href="http://t.me/PurpleFsupport" target="_blank" rel="noreferrer">
+              Contact ✈️
             </a>
-            <a className="secondary-link" href="mailto:saintheraldfaust@gmail.com">
-              Email 💌
+            <a className="secondary-link" href="https://t.me/purplefinger21" target="_blank" rel="noreferrer">
+              Join Channel 📢
             </a>
           </div>
         </section>
@@ -283,8 +283,8 @@ function App() {
                 <span className="step-number">2</span>
                 <div>
                   <strong>Get Product Key</strong>
-                  <p>Contact Saint H on WhatsApp for your video product key.</p>
-                  <a href="https://wa.me/2349065786976" target="_blank" rel="noreferrer" className="whatsapp-link">📱 WhatsApp Saint H</a>
+                  <p>Contact Purplefinger Support on Telegram for your product key.</p>
+                  <a href="http://t.me/PurpleFsupport" target="_blank" rel="noreferrer" className="whatsapp-link">✈️ Message Support on Telegram</a>
                 </div>
               </div>
               <div className="step">
