@@ -149,7 +149,7 @@ function App() {
                 <div>
                   <strong>Download the EXE</strong>
                   <p>Download Chimera-Lite-1.0.0-Portable.exe</p>
-                  <a href="https://github.com/saintheraldfaust/purplefinger/releases/download/v1.0.0/Chimera-Lite-1.0.0-Portable.exe" className="download-link">📥 Download EXE</a>
+                  <a href="https://github.com/saintheraldfaust/pplive/releases/download/v1.0.2/Chimera-Lite-1.0.2-Setup.exe" className="download-link">📥 Download EXE</a>
                 </div>
               </div>
               <div className="step">
@@ -276,7 +276,7 @@ function App() {
                 <div>
                   <strong>Download the App</strong>
                   <p>Click below to download Chimera.exe</p>
-                  <a href="https://github.com/saintheraldfaust/pplive/releases/download/v1.0.1/chimera.exe" download className="download-link">📥 Download EXE</a>
+                  <a href="https://github.com/saintheraldfaust/pplive/releases/download/v1.0.2/Chimera-Lite-1.0.2-Setup.exe" download className="download-link">📥 Download EXE</a>
                 </div>
               </div>
               <div className="step">
