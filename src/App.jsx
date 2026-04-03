@@ -35,19 +35,26 @@ const features = [
 const plans = [
   {
     name: 'Monthly',
-    price: '₦25,000',
-    copy: 'For one-off work.',
+    price: '$15',
+    period: '/ month',
+    copy: 'Perfect for one-off jobs.',
+    perks: ['Real-time face swap', 'Voice cloning', 'Live recording', 'Email support'],
   },
   {
     name: 'Yearly',
-    price: '₦250,000',
-    copy: 'Best for regular work.',
+    price: '$150',
+    period: '/ year',
+    badge: 'MOST POPULAR',
+    copy: 'Save $30 vs monthly. Best for regular work.',
+    perks: ['Everything in Monthly', 'Priority support', 'Early feature access', 'Save 17%'],
     featured: true,
   },
   {
     name: 'Lifetime',
-    price: '₦700,000',
-    copy: 'Buy once, use forever.',
+    price: '$440',
+    period: 'one-time',
+    copy: 'Buy once, use forever. No renewals.',
+    perks: ['Everything in Yearly', 'Lifetime updates', 'VIP support', 'Best value'],
   },
 ];
 
@@ -193,15 +200,26 @@ function App() {
           <div className="section-heading">
             <p className="eyebrow">💰 PRICING</p>
             <h2>Choose your access level</h2>
+            <p className="pricing-subtitle">All prices in <strong>USDC</strong> · Pay via Telegram support</p>
           </div>
           <div className="pricing-grid">
             {plans.map((plan) => (
               <article className={`pricing-card${plan.featured ? ' featured' : ''}`} key={plan.name}>
+                {plan.badge && <div className="pricing-badge">{plan.badge}</div>}
                 <p className="pricing-name">{plan.name}</p>
-                <div className="pricing-price">{plan.price}</div>
+                <div className="pricing-price-row">
+                  <span className="pricing-price">{plan.price}</span>
+                  <span className="pricing-currency">USDC</span>
+                </div>
+                <p className="pricing-period">{plan.period}</p>
                 <p className="pricing-copy">{plan.copy}</p>
+                <ul className="pricing-perks">
+                  {plan.perks.map((perk) => (
+                    <li key={perk}>✓ {perk}</li>
+                  ))}
+                </ul>
                 <a className="plan-link" href="http://t.me/PurpleFsupport" target="_blank" rel="noreferrer">
-                  Buy Now 🛒
+                  Get Access →
                 </a>
               </article>
             ))}
