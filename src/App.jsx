@@ -45,7 +45,7 @@ const plans = [
     price: '$200',
     period: '/ year',
     badge: 'MOST POPULAR',
-    copy: 'Save $30 vs monthly. Best for regular work.',
+    copy: 'Save $40 vs monthly. Best for regular work.',
     perks: ['Everything in Monthly', 'Priority support', 'Early feature access', 'Save 17%'],
     featured: true,
   },
