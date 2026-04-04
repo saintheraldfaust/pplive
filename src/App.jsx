@@ -35,14 +35,14 @@ const features = [
 const plans = [
   {
     name: 'Monthly',
-    price: '$15',
+    price: '$20',
     period: '/ month',
     copy: 'Perfect for one-off jobs.',
     perks: ['Real-time face swap', 'Voice cloning', 'Live recording', 'Email support'],
   },
   {
     name: 'Yearly',
-    price: '$150',
+    price: '$200',
     period: '/ year',
     badge: 'MOST POPULAR',
     copy: 'Save $30 vs monthly. Best for regular work.',
