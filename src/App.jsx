@@ -10,7 +10,7 @@ const features = [
   },
   {
     title: 'Cloud GPU rendering',
-    body: 'Every frame is processed on our GPUs. Any laptop works — no dedicated graphics card required on your end.',
+    body: 'Every frame is processed on our GPUs. Any laptop works, no dedicated graphics card required on your end.',
   },
   {
     title: 'Accurate complexion matching',
@@ -18,11 +18,11 @@ const features = [
   },
   {
     title: 'Fast, Balanced, and HQ modes',
-    body: 'Trade frame rate for restoration detail on the fly — switch profiles mid-call with no reconnect.',
+    body: 'Trade frame rate for restoration detail on the fly. Switch profiles mid-call with no reconnect.',
   },
   {
     title: 'Drops into any call app',
-    body: 'Outputs a virtual camera via OBS Browser Source. Works with Zoom, Meet, Discord, Teams — anything with a camera picker.',
+    body: 'Outputs a virtual camera via OBS Browser Source. Works with Zoom, Meet, Discord, Teams, and anything else with a camera picker.',
   },
   {
     title: 'Privacy Shield',
@@ -108,7 +108,7 @@ function App() {
             </h1>
             <p className="hero-text">
               Purplefinger renders your identity transformation on our cloud GPUs and streams
-              it straight into your call — no local hardware, no setup beyond a product key.
+              it straight into your call. No local hardware, no setup beyond a product key.
             </p>
             <div className="hero-actions">
               <DownloadButton className="btn btn-primary">Download for Windows</DownloadButton>

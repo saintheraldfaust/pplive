@@ -7,7 +7,7 @@
   font-display: swap;
 }
 
-/* ─── Tokens — matches the app + admin surfaces exactly ─────── */
+/* ─── Tokens: matches the app + admin surfaces exactly ─────── */
 :root {
   --bg:        #000000;
   --panel:     #0a0a0a;
@@ -171,7 +171,7 @@ h1 {
   color: var(--muted-2);
 }
 
-/* ─── Hero visual (mock product panel — no images/video) ──── */
+/* ─── Hero visual (mock product panel, no images/video) ──── */
 .hero-visual {
   background: var(--panel);
   border: 1px solid var(--border);
