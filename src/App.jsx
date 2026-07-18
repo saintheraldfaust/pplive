@@ -1,34 +1,50 @@
-import { useState } from 'react';
-import heroVideo from '../mainvideo.mp4';
-import releaseVideo from '../newrelease.mp4';
-import recOneVideo from '../rec1.mp4';
-import recTwoVideo from '../rec2.mp4';
-import appScreenshot from '../Screenshot 2026-03-23 224628.png';
+const BACKEND_URL = 'https://purplefinger-chimera.onrender.com';
+const DOWNLOAD_URL = `${BACKEND_URL}/download`;
+const TELEGRAM_SUPPORT = 'http://t.me/PurpleFsupport';
+const TELEGRAM_CHANNEL = 'https://t.me/purplefinger21';
 
 const features = [
   {
-    title: '🔄 Real-time Face Swap',
-    body: 'Swap faces instantly in video calls for perfect impersonation.',
+    title: 'Real-time identity transformation',
+    body: 'Swap your face live during calls and streams. Rendered frame-by-frame on our cloud pipeline, not a filter.',
   },
   {
-    title: '🎤 Voice Cloning',
-    body: 'Clone any voice to sound exactly like the target.',
+    title: 'Cloud GPU rendering',
+    body: 'Every frame is processed on our GPUs. Any laptop works — no dedicated graphics card required on your end.',
   },
   {
-    title: '📹 Call Recording',
-    body: 'Record live deepfake videos and perform any actions and share.',
+    title: 'Accurate complexion matching',
+    body: 'Tone-matched results across every identity, with a live strength control so the match is always right.',
   },
   {
-    title: '⚡ Runs on Any Laptop',
-    body: 'No high-end GPU needed - works on basic hardware.',
+    title: 'Fast, Balanced, and HQ modes',
+    body: 'Trade frame rate for restoration detail on the fly — switch profiles mid-call with no reconnect.',
   },
   {
-    title: '🌍 Optimized for White Faces',
-    body: 'Best results for impersonating foreigners.',
+    title: 'Drops into any call app',
+    body: 'Outputs a virtual camera via OBS Browser Source. Works with Zoom, Meet, Discord, Teams — anything with a camera picker.',
   },
   {
-    title: '🎭 Clone Any Face',
-    body: 'Use photos of anyone for face swapping.',
+    title: 'Privacy Shield',
+    body: 'Automatically hides your output the moment connection quality drops, so a degraded feed is never exposed.',
+  },
+];
+
+const steps = [
+  {
+    n: '01',
+    title: 'Download the app',
+    body: 'Windows installer, signed builds shipped regularly.',
+  },
+  {
+    n: '02',
+    title: 'Get a product key',
+    body: 'Message support on Telegram to get licensed access.',
+  },
+  {
+    n: '03',
+    title: 'Install and log in',
+    body: 'Enter your key, upload an identity photo, start a session.',
   },
 ];
 
@@ -38,7 +54,7 @@ const plans = [
     price: '$20',
     period: '/ month',
     copy: 'Perfect for one-off jobs.',
-    perks: ['Real-time face swap', 'Voice cloning', 'Live recording', 'Email support'],
+    perks: ['Real-time face transformation', 'Cloud GPU rendering', 'Session recording', 'Email support'],
   },
   {
     name: 'Yearly',
@@ -58,133 +74,86 @@ const plans = [
   },
 ];
 
-const demos = [
-  {
-    title: 'Face Swap Demo',
-    media: heroVideo,
-    type: 'video',
-    featured: true,
-    caption: 'Real-time face swap in action.',
-  },
-  {
-    title: 'App Interface',
-    media: appScreenshot,
-    type: 'image',
-    caption: 'Simple controls for deepfake operations.',
-  },
-  {
-    title: 'Recording Demo',
-    media: releaseVideo,
-    type: 'video',
-    caption: 'Demo recording',
-  },
-  {
-    title: 'Recording Demo',
-    media: recOneVideo,
-    type: 'video',
-    caption: 'Record live deepfake videos.',
-  },
-  {
-    title: 'More Demos',
-    media: recTwoVideo,
-    type: 'video',
-    caption: 'Additional deepfake examples.',
-  },
-];
+function DownloadButton({ className, children }) {
+  return (
+    <a className={className} href={DOWNLOAD_URL}>
+      {children}
+    </a>
+  );
+}
 
 function App() {
-  const [showPopup, setShowPopup] = useState(false);
-
-  const [featuredDemo, screenshotDemo, ...gridDemos] = demos;
-
   return (
     <div className="site-shell">
-      <div className="matrix-overlay" aria-hidden="true" />
-
-      <header className="hero">
-        <div className="terminal-bar">
-          <span className="terminal-pill online" />
-          <span className="terminal-pill idle" />
-          <span className="terminal-pill warn" />
-          <span className="terminal-label">root@pf:~# purplefingerlive</span>
-        </div>
-
-        <div className="hero-grid">
-          <div className="hero-copy">
-            <p className="eyebrow">🕵️ DEEPFAKE TOOL</p>
-            <h1>Face Swap & Voice Clone</h1>
-            <p className="hero-text">
-              Deepfake tool for video call work. Swap faces, clone voices, record live sessions. 
-              Undetectable impersonation.
-            </p>
-            <button className="big-download-btn" onClick={() => setShowPopup(true)}>
-              🚀 DOWNLOAD NOW
-            </button>
-            <div className="hero-metrics">
-              <div>
-                <strong>⚡ Real-time</strong>
-                <span>Instant face swaps in calls</span>
-              </div>
-              <div>
-                <strong>🎤 Voice Clone</strong>
-                <span>Accurate voice matching</span>
-              </div>
-              <div>
-                <strong>💻 Any Laptop</strong>
-                <span>No GPU required</span>
-              </div>
-            </div>
-          </div>
-
-          <div className="hero-media card">
-            <div className="card-label">Live Demo</div>
-            <video className="media-frame hero-video" autoPlay muted loop playsInline preload="metadata">
-              <source src={featuredDemo.media} type="video/mp4" />
-            </video>
-            <p>{featuredDemo.caption}</p>
-          </div>
-        </div>
+      <header className="topbar">
+        <a className="brand" href="#top">
+          Purplefinger<span className="brand-slash">/</span>
+        </a>
+        <nav className="topnav">
+          <a href="#features">Features</a>
+          <a href="#pricing">Pricing</a>
+          <a href="#get-started">Get started</a>
+        </nav>
+        <DownloadButton className="topbar-download">Download</DownloadButton>
       </header>
 
-      {showPopup && (
-        <div className="popup-overlay" onClick={() => setShowPopup(false)}>
-          <div className="popup-content" onClick={(e) => e.stopPropagation()}>
-            <h2>🚀 Get Started with Deepfake Tool</h2>
-            <div className="steps">
-              <div className="step">
-                <span className="step-number">1</span>
-                <div>
-                  <strong>Download the EXE</strong>
-                  <p>Download Chimera-Lite-1.0.0-Portable.exe</p>
-                  <a href="https://github.com/saintheraldfaust/pplive/releases/download/v1.0.2/Chimera-Lite-1.0.2-Setup.exe" className="download-link">📥 Download EXE</a>
-                </div>
-              </div>
-              <div className="step">
-                <span className="step-number">2</span>
-                <div>
-                  <strong>Get Product Key</strong>
-                  <p>Contact Purplefinger Support on Telegram for a product key</p>
-                  <a href="http://t.me/PurpleFsupport" target="_blank" rel="noreferrer" className="whatsapp-link">✈️ Message Support on Telegram</a>
-                </div>
-              </div>
-              <div className="step">
-                <span className="step-number">3</span>
-                <div>
-                  <strong>Install & Login</strong>
-                  <p>Install the software and use the product key to login</p>
-                </div>
-              </div>
+      <main>
+        <section className="hero" id="top">
+          <div className="hero-copy">
+            <p className="eyebrow">Real-time · Cloud GPU</p>
+            <h1>
+              Live face transformation.
+              <br />
+              Any call. Zero GPU.
+            </h1>
+            <p className="hero-text">
+              Purplefinger renders your identity transformation on our cloud GPUs and streams
+              it straight into your call — no local hardware, no setup beyond a product key.
+            </p>
+            <div className="hero-actions">
+              <DownloadButton className="btn btn-primary">Download for Windows</DownloadButton>
+              <a className="btn btn-ghost" href={TELEGRAM_SUPPORT} target="_blank" rel="noreferrer">
+                Get a product key ↗
+              </a>
             </div>
-            <button className="close-popup" onClick={() => setShowPopup(false)}>Close</button>
+            <p className="hero-meta">v1.1.0 · Windows · Product key required</p>
           </div>
-        </div>
-      )}
 
-      <main className="content-stack">
-        <section className="card section-block">
+          <div className="hero-visual" aria-hidden="true">
+            <div className="hv-topbar">
+              <span className="hv-dot" />
+              <span className="hv-dot" />
+              <span className="hv-dot" />
+              <span className="hv-title">PURPLEFINGER</span>
+              <span className="hv-status">● ACTIVE</span>
+            </div>
+            <div className="hv-stats">
+              <span>MODE <b>REALTIME</b></span>
+              <span>SEND <b>24 FPS</b></span>
+              <span>RECV <b>22 FPS</b></span>
+              <span>LATENCY <b>118 MS</b></span>
+              <span>LINK <b>H.264</b></span>
+            </div>
+            <div className="hv-stage">
+              <svg viewBox="0 0 200 200" className="hv-mesh">
+                <circle cx="100" cy="86" r="48" />
+                <path d="M60 150 Q100 118 140 150" />
+                <circle cx="80" cy="80" r="2.5" fill="currentColor" stroke="none" />
+                <circle cx="120" cy="80" r="2.5" fill="currentColor" stroke="none" />
+                <path d="M84 108 Q100 116 116 108" />
+              </svg>
+            </div>
+            <div className="hv-footer">
+              <span>Cloud pipeline</span>
+              <span>OBS → localhost:7891</span>
+            </div>
+          </div>
+        </section>
+
+        <section className="section" id="features">
           <div className="section-heading">
-            <p className="eyebrow">🔥 FEATURES</p>
-            <h2>Why this deepfake tool is essential</h2>
+            <p className="eyebrow">Features</p>
+            <h2>Built for real sessions, not demos</h2>
           </div>
           <div className="feature-grid">
             {features.map((feature) => (
@@ -196,11 +165,27 @@ function App() {
           </div>
         </section>
 
-        <section className="card section-block pricing-block">
+        <section className="section" id="get-started">
           <div className="section-heading">
-            <p className="eyebrow">💰 PRICING</p>
+            <p className="eyebrow">Get started</p>
+            <h2>Three steps to a live session</h2>
+          </div>
+          <div className="steps-grid">
+            {steps.map((step) => (
+              <article className="step-card" key={step.n}>
+                <span className="step-n">{step.n}</span>
+                <h3>{step.title}</h3>
+                <p>{step.body}</p>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <section className="section" id="pricing">
+          <div className="section-heading">
+            <p className="eyebrow">Pricing</p>
             <h2>Choose your access level</h2>
-            <p className="pricing-subtitle">All prices in <strong>USDC</strong> · Pay via Telegram support</p>
+            <p className="pricing-subtitle">All prices in USDC · Pay via Telegram support</p>
           </div>
           <div className="pricing-grid">
             {plans.map((plan) => (
@@ -215,53 +200,12 @@ function App() {
                 <p className="pricing-copy">{plan.copy}</p>
                 <ul className="pricing-perks">
                   {plan.perks.map((perk) => (
-                    <li key={perk}>✓ {perk}</li>
+                    <li key={perk}>{perk}</li>
                   ))}
                 </ul>
-                <a className="plan-link" href="http://t.me/PurpleFsupport" target="_blank" rel="noreferrer">
-                  Get Access →
+                <a className="plan-link" href={TELEGRAM_SUPPORT} target="_blank" rel="noreferrer">
+                  Get access ↗
                 </a>
-              </article>
-            ))}
-          </div>
-        </section>
-
-        <section className="card section-block" id="demo">
-          <div className="section-heading">
-            <p className="eyebrow">📸 DEMOS</p>
-            <h2>See the tool in action</h2>
-          </div>
-
-          <div className="demo-featured-grid">
-            <article className="demo-card large">
-              <div className="card-label">App Screenshot</div>
-              <img className="media-frame screenshot" src={screenshotDemo.media} alt="Deepfake tool interface" />
-              <p>{screenshotDemo.caption}</p>
-            </article>
-
-            <article className="demo-callout">
-              <div className="callout-chip">🎭 Deepfake Tool</div>
-              <h3>Face swap + voice clone for work</h3>
-              <p>
-                Undetectable deepfakes for video calls. Impersonate anyone, record sessions, share results.
-              </p>
-              <ul>
-                <li>🔄 Real-time face swapping</li>
-                <li>🎤 Voice spoofing</li>
-                <li>📹 Live recording</li>
-                <li>⚡ No GPU required</li>
-              </ul>
-            </article>
-          </div>
-
-          <div className="demo-grid">
-            {gridDemos.map((demo) => (
-              <article className="demo-card" key={demo.title}>
-                <div className="card-label">{demo.title}</div>
-                <video className="media-frame" controls playsInline preload="metadata">
-                  <source src={demo.media} type="video/mp4" />
-                </video>
-                <p>{demo.caption}</p>
               </article>
             ))}
           </div>
@@ -269,54 +213,27 @@ function App() {
 
         <section className="cta-strip">
           <div>
-            <p className="eyebrow">🚀 GET ACCESS</p>
-            <h2>Ready for undetectable deepfakes?</h2>
-            <p>Download and start working with pro tools.</p>
+            <p className="eyebrow">Ready</p>
+            <h2>Go live in the next five minutes.</h2>
+            <p>Download the app, message support for a key, start a session.</p>
           </div>
           <div className="cta-actions">
-            <a className="primary-link" href="http://t.me/PurpleFsupport" target="_blank" rel="noreferrer">
-              Contact ✈️
-            </a>
-            <a className="secondary-link" href="https://t.me/purplefinger21" target="_blank" rel="noreferrer">
-              Join Channel 📢
+            <DownloadButton className="btn btn-primary">Download for Windows</DownloadButton>
+            <a className="btn btn-ghost" href={TELEGRAM_CHANNEL} target="_blank" rel="noreferrer">
+              Join the channel ↗
             </a>
           </div>
         </section>
       </main>
 
-      {showPopup && (
-        <div className="popup-overlay" onClick={() => setShowPopup(false)}>
-          <div className="popup-content" onClick={(e) => e.stopPropagation()}>
-            <h2>🚀 Get Started with Deepfake Tool</h2>
-            <div className="steps">
-              <div className="step">
-                <span className="step-number">1</span>
-                <div>
-                  <strong>Download the App</strong>
-                  <p>Click below to download Chimera.exe</p>
-                  <a href="https://github.com/saintheraldfaust/pplive/releases/download/v1.0.2/Chimera-Lite-1.0.2-Setup.exe" download className="download-link">📥 Download EXE</a>
-                </div>
-              </div>
-              <div className="step">
-                <span className="step-number">2</span>
-                <div>
-                  <strong>Get Product Key</strong>
-                  <p>Contact Purplefinger Support on Telegram for your product key.</p>
-                  <a href="http://t.me/PurpleFsupport" target="_blank" rel="noreferrer" className="whatsapp-link">✈️ Message Support on Telegram</a>
-                </div>
-              </div>
-              <div className="step">
-                <span className="step-number">3</span>
-                <div>
-                  <strong>Install & Login</strong>
-                  <p>Install the app and use the product key to login.</p>
-                </div>
-              </div>
-            </div>
-            <button className="close-popup" onClick={() => setShowPopup(false)}>✕ Close</button>
-          </div>
+      <footer className="footer">
+        <span>© {new Date().getFullYear()} Purplefinger</span>
+        <div className="footer-links">
+          <a href={TELEGRAM_SUPPORT} target="_blank" rel="noreferrer">Support</a>
+          <a href={TELEGRAM_CHANNEL} target="_blank" rel="noreferrer">Channel</a>
+          <a href={DOWNLOAD_URL}>Download</a>
         </div>
-      )}
+      </footer>
     </div>
   );
 }
