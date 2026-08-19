@@ -152,6 +152,9 @@ function App() {
             </p>
             <div className="hero-actions">
               <DownloadButton className="btn btn-primary">Download for Windows</DownloadButton>
+              <a className="btn btn-payment" href="#payment">
+                Make payment
+              </a>
               <a className="btn btn-ghost" href={TELEGRAM_SUPPORT} target="_blank" rel="noreferrer">
                 Get a product key ↗
               </a>
@@ -249,7 +252,7 @@ function App() {
               </article>
             ))}
           </div>
-          <div className="payment-panel">
+          <div className="payment-panel" id="payment">
             <div className="payment-intro">
               <p className="eyebrow">Crypto payment</p>
               <h3>Pay, then request your product key</h3>

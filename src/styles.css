@@ -409,7 +409,16 @@ h1 {
 .pricing-card.featured .plan-link { background: #fff; border-color: #fff; color: #000; }
 .pricing-card.featured .plan-link:hover { background: #d4d4d4; border-color: #d4d4d4; }
 
+.btn-payment {
+  background: #ffd400;
+  border-color: #ffd400;
+  color: #111;
+  font-weight: 700;
+}
+.btn-payment:hover { background: #ffe34d; border-color: #ffe34d; }
+
 .payment-panel {
+  scroll-margin-top: 90px;
   margin-top: 20px;
   padding: 28px;
   border: 1px solid var(--border);
