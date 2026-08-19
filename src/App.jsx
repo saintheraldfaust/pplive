@@ -1,6 +1,8 @@
+import { useState } from 'react';
+
 const BACKEND_URL = 'https://purplefinger-chimera.onrender.com';
 const DOWNLOAD_URL = `${BACKEND_URL}/download`;
-const TELEGRAM_SUPPORT = 'http://t.me/PurpleFsupport';
+const TELEGRAM_SUPPORT = 'https://t.me/PurpleFsupport';
 const TELEGRAM_CHANNEL = 'https://t.me/purplefinger21';
 
 const features = [
@@ -74,11 +76,49 @@ const plans = [
   },
 ];
 
+const paymentOptions = [
+  {
+    token: 'USDC',
+    network: 'Ethereum (ERC-20)',
+    address: '0xea31C3d19D2F6572adC1e9a04169a4FE35231fBf',
+  },
+  {
+    token: 'USDT',
+    network: 'TRON (TRC-20)',
+    address: 'TU7ZGek2xb3r3kHdfLiG12EaeHdV8SPbC3',
+  },
+];
+
 function DownloadButton({ className, children }) {
   return (
     <a className={className} href={DOWNLOAD_URL}>
       {children}
     </a>
+  );
+}
+
+function PaymentOption({ token, network, address }) {
+  const [copied, setCopied] = useState(false);
+
+  async function copyAddress() {
+    await navigator.clipboard.writeText(address);
+    setCopied(true);
+    window.setTimeout(() => setCopied(false), 1800);
+  }
+
+  return (
+    <article className="payment-option">
+      <div className="payment-option-heading">
+        <strong>{token}</strong>
+        <span>{network}</span>
+      </div>
+      <div className="wallet-row">
+        <code>{address}</code>
+        <button type="button" onClick={copyAddress} aria-label={`Copy ${token} ${network} address`}>
+          {copied ? 'Copied' : 'Copy'}
+        </button>
+      </div>
+    </article>
   );
 }
 
@@ -185,7 +225,7 @@ function App() {
           <div className="section-heading">
             <p className="eyebrow">Pricing</p>
             <h2>Choose your access level</h2>
-            <p className="pricing-subtitle">All prices in USDC · Pay via Telegram support</p>
+            <p className="pricing-subtitle">Pay with USDC (ERC-20) or USDT (TRC-20)</p>
           </div>
           <div className="pricing-grid">
             {plans.map((plan) => (
@@ -208,6 +248,29 @@ function App() {
                 </a>
               </article>
             ))}
+          </div>
+          <div className="payment-panel">
+            <div className="payment-intro">
+              <p className="eyebrow">Crypto payment</p>
+              <h3>Pay, then request your product key</h3>
+              <p>
+                Send the exact price of your chosen plan to one of the wallets below. Once the
+                payment is complete, send your proof of payment and selected plan to Telegram
+                support to receive your product key.
+              </p>
+            </div>
+            <div className="payment-options">
+              {paymentOptions.map((option) => (
+                <PaymentOption key={option.address} {...option} />
+              ))}
+            </div>
+            <p className="payment-warning">
+              Only send the listed token on the stated network. Payments sent using another
+              token or network may be permanently lost.
+            </p>
+            <a className="payment-support" href={TELEGRAM_SUPPORT} target="_blank" rel="noreferrer">
+              Send proof to Telegram support ↗
+            </a>
           </div>
         </section>
 

@@ -409,6 +409,71 @@ h1 {
 .pricing-card.featured .plan-link { background: #fff; border-color: #fff; color: #000; }
 .pricing-card.featured .plan-link:hover { background: #d4d4d4; border-color: #d4d4d4; }
 
+.payment-panel {
+  margin-top: 20px;
+  padding: 28px;
+  border: 1px solid var(--border);
+  background: var(--panel);
+}
+
+.payment-intro h3 { margin: 6px 0 8px; font-size: 1.2rem; }
+.payment-intro > p:last-child { max-width: 720px; font-size: 0.86rem; }
+
+.payment-options {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 22px;
+}
+
+.payment-option { padding: 16px; border: 1px solid var(--border-2); background: var(--bg); }
+
+.payment-option-heading {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.payment-option-heading strong { font-family: var(--mono); font-size: 0.8rem; }
+.payment-option-heading span { font-size: 0.72rem; color: var(--muted-2); }
+
+.wallet-row { display: flex; align-items: stretch; min-width: 0; }
+.wallet-row code {
+  min-width: 0;
+  flex: 1;
+  padding: 10px;
+  overflow-wrap: anywhere;
+  border: 1px solid var(--border);
+  color: var(--text);
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  line-height: 1.45;
+}
+.wallet-row button {
+  padding: 0 14px;
+  border: 1px solid var(--border-2);
+  border-left: 0;
+  background: var(--panel-2);
+  color: var(--text);
+  font: 600 0.72rem var(--mono);
+  cursor: pointer;
+}
+.wallet-row button:hover { background: #262626; }
+
+.payment-warning { margin-top: 14px; color: var(--muted-2); font-size: 0.76rem; }
+.payment-support {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 11px 16px;
+  background: #fff;
+  color: #000;
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+.payment-support:hover { background: #d4d4d4; }
+
 /* ─── CTA strip ──────────────────────────────────────────── */
 .cta-strip {
   display: flex;
@@ -442,6 +507,7 @@ h1 {
   .feature-grid, .steps-grid, .pricing-grid { grid-template-columns: 1fr; }
   .topnav { display: none; }
   .cta-strip { flex-direction: column; align-items: flex-start; }
+  .payment-options { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 560px) {
@@ -449,4 +515,8 @@ h1 {
   .topbar { padding: 0 20px; gap: 16px; }
   .hero-actions, .cta-actions { flex-direction: column; align-items: stretch; width: 100%; }
   .footer { flex-direction: column; gap: 14px; align-items: flex-start; }
+  .payment-panel { padding: 20px; }
+  .payment-option-heading { align-items: flex-start; flex-direction: column; gap: 4px; }
+  .wallet-row { flex-direction: column; }
+  .wallet-row button { min-height: 38px; border-left: 1px solid var(--border-2); border-top: 0; }
 }
