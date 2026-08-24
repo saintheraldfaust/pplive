@@ -60,6 +60,93 @@ const steps = [
   },
 ];
 
+const guideSteps = [
+  {
+    n: '01',
+    title: 'Install a virtual camera',
+    body: (
+      <>
+        <p>
+          Purplefinger renders the swapped video and serves it as a local Browser Source. OBS
+          captures that source, and a virtual camera driver hands OBS's output to your call app
+          as if it were a real webcam.
+        </p>
+        <p>
+          <strong>Windows:</strong> install <strong>DroidCam</strong> (the client plus its OBS
+          Virtual Output plugin), then restart your PC once so the driver registers. Apps like
+          WhatsApp Desktop don't recognize OBS's own Virtual Camera, but they do recognize DroidCam's
+          device.
+        </p>
+        <p>
+          <strong>macOS:</strong> nothing extra to install. OBS ships its own virtual camera and
+          it's recognized broadly, skip straight to Step 2.
+        </p>
+      </>
+    ),
+  },
+  {
+    n: '02',
+    title: 'Configure OBS',
+    body: (
+      <>
+        <p>Open OBS Studio (free at <code>obsproject.com</code>).</p>
+        <ol>
+          <li>In Sources, click <strong>+</strong> then <strong>Browser</strong>, name it anything.</li>
+          <li>Set the URL to <code>http://localhost:7891</code>.</li>
+          <li>Leave Width/Height at their defaults.</li>
+          <li>Right-click the source in the preview and choose <strong>Transform → Fit to Screen</strong>.</li>
+          <li>Under Settings → Audio, set Mic/Auxiliary Audio to your real microphone.</li>
+        </ol>
+      </>
+    ),
+  },
+  {
+    n: '03',
+    title: 'Activate the virtual camera',
+    body: (
+      <>
+        <p>
+          <strong>Windows:</strong> in OBS's menu bar, go to <strong>Tools → DroidCam OBS Virtual
+          Output</strong> and click Start. Status should read "Active".
+        </p>
+        <p>
+          <strong>macOS:</strong> click <strong>Start Virtual Camera</strong> in OBS's Controls
+          panel.
+        </p>
+      </>
+    ),
+  },
+  {
+    n: '04',
+    title: 'Start Purplefinger',
+    body: (
+      <>
+        <p>Upload your identity photo in the app, click Connect, and wait 30 to 90 seconds for the GPU pod to boot. Your OBS preview should show the swapped video once it's live.</p>
+      </>
+    ),
+  },
+  {
+    n: '05',
+    title: 'Make the call',
+    body: (
+      <>
+        <p>
+          Open WhatsApp, Zoom, Meet, or Discord and start a video call. Pick <strong>DroidCam
+          Source</strong> (Windows) or <strong>OBS Virtual Camera</strong> (macOS) from the camera
+          dropdown, and your real microphone for audio. Keep OBS running for the whole call.
+        </p>
+      </>
+    ),
+  },
+];
+
+const troubleshooting = [
+  { q: 'Camera source not showing up in my call app', a: 'On Windows, restart your PC after installing DroidCam so the virtual device registers.' },
+  { q: 'Black screen in the OBS Browser Source', a: 'Make sure a Purplefinger session is actually running and the Browser Source URL matches http://localhost:7891.' },
+  { q: 'Low fps or laggy video', a: 'Switch to the Fast quality mode and Auto transport in the app. You want at least 5 Mbps of upload bandwidth.' },
+  { q: 'No audio on the call', a: "Audio doesn't run through OBS. Select your real microphone and speakers directly in the call app's settings." },
+];
+
 const plans = [
   {
     name: 'Monthly',
@@ -108,18 +195,16 @@ function DownloadButton({ className, platform, children }) {
   );
 }
 
-function PlatformDownloadGroup({ primaryClassName = 'btn btn-primary' }) {
-  const primary = detectPlatform();
-  const secondary = primary === 'mac' ? 'win' : 'mac';
+function DownloadButtonPair({ className = 'btn btn-primary' }) {
   return (
-    <div className="platform-download-group">
-      <DownloadButton className={primaryClassName} platform={primary}>
-        Download for {PLATFORM_LABEL[primary]}
+    <>
+      <DownloadButton className={className} platform="win">
+        Download for {PLATFORM_LABEL.win}
       </DownloadButton>
-      <DownloadButton className="platform-alt-link" platform={secondary}>
-        Also available for {PLATFORM_LABEL[secondary]}
+      <DownloadButton className={className} platform="mac">
+        Download for {PLATFORM_LABEL.mac}
       </DownloadButton>
-    </div>
+    </>
   );
 }
 
@@ -157,10 +242,14 @@ function App() {
         </a>
         <nav className="topnav">
           <a href="#features">Features</a>
+          <a href="#how-to-use">How to use</a>
           <a href="#pricing">Pricing</a>
           <a href="#get-started">Get started</a>
         </nav>
-        <DownloadButton className="topbar-download">Download</DownloadButton>
+        <div className="topbar-downloads">
+          <DownloadButton className="topbar-download" platform="win">Windows</DownloadButton>
+          <DownloadButton className="topbar-download" platform="mac">macOS</DownloadButton>
+        </div>
       </header>
 
       <main>
@@ -177,7 +266,7 @@ function App() {
               it straight into your call. No local hardware, no setup beyond a product key.
             </p>
             <div className="hero-actions">
-              <PlatformDownloadGroup />
+              <DownloadButtonPair />
               <a className="btn btn-payment" href="#payment">
                 Make payment
               </a>
@@ -253,6 +342,42 @@ function App() {
           </div>
         </section>
 
+        <section className="section" id="how-to-use">
+          <div className="section-heading">
+            <p className="eyebrow">Setup guide</p>
+            <h2>DroidCam, OBS, and your first call</h2>
+            <p className="section-sub">
+              Purplefinger renders your swapped face on our cloud GPU and hands it to OBS as a
+              local Browser Source. From there, a virtual camera driver is what makes WhatsApp,
+              Zoom, or Meet see it as a real webcam. This same walkthrough is built into the app
+              under Instructions.
+            </p>
+          </div>
+          <div className="guide-list">
+            {guideSteps.map((step) => (
+              <article className="guide-step" key={step.n}>
+                <span className="step-n">{step.n}</span>
+                <div className="guide-step-body">
+                  <h3>{step.title}</h3>
+                  {step.body}
+                </div>
+              </article>
+            ))}
+          </div>
+
+          <div className="guide-faq">
+            <h3>Troubleshooting</h3>
+            <dl>
+              {troubleshooting.map((item) => (
+                <div className="guide-faq-item" key={item.q}>
+                  <dt>{item.q}</dt>
+                  <dd>{item.a}</dd>
+                </div>
+              ))}
+            </dl>
+          </div>
+        </section>
+
         <section className="section" id="pricing">
           <div className="section-heading">
             <p className="eyebrow">Pricing</p>
@@ -313,7 +438,7 @@ function App() {
             <p>Download the app, message support for a key, start a session.</p>
           </div>
           <div className="cta-actions">
-            <PlatformDownloadGroup />
+            <DownloadButtonPair />
             <a className="btn btn-ghost" href={TELEGRAM_CHANNEL} target="_blank" rel="noreferrer">
               Join the channel ↗
             </a>

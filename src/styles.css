@@ -114,6 +114,8 @@ h1, h2, h3 {
 .topnav a { font-size: 0.85rem; color: var(--muted); transition: color 0.12s ease; }
 .topnav a:hover { color: #fff; }
 
+.topbar-downloads { display: flex; gap: 8px; }
+
 .topbar-download {
   padding: 8px 18px;
   font-size: 0.78rem;
@@ -162,21 +164,6 @@ h1 {
 }
 
 .hero-actions .btn { padding: 13px 24px; font-size: 0.88rem; }
-
-.platform-download-group {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 8px;
-}
-.platform-alt-link {
-  font-family: var(--mono);
-  font-size: 0.72rem;
-  color: var(--muted);
-  text-decoration: none;
-  border-bottom: 1px solid transparent;
-}
-.platform-alt-link:hover { color: var(--text); border-bottom-color: var(--border-2); }
 
 .hero-meta {
   margin-top: 16px;
@@ -276,6 +263,7 @@ h1 {
 
 .section-heading { margin-bottom: 40px; max-width: 560px; }
 .section-heading h2 { font-size: clamp(1.5rem, 2.4vw, 2rem); }
+.section-sub { margin-top: 10px; font-size: 0.84rem; color: var(--muted); line-height: 1.6; }
 
 /* ─── Feature grid ───────────────────────────────────────── */
 .feature-grid {
@@ -322,6 +310,50 @@ h1 {
 
 .step-card h3 { font-size: 0.95rem; font-weight: 600; margin-bottom: 8px; }
 .step-card p { font-size: 0.85rem; }
+
+/* ─── Setup guide ────────────────────────────────────────── */
+.guide-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+}
+
+.guide-step {
+  display: grid;
+  grid-template-columns: 56px 1fr;
+  gap: 20px;
+  padding: 28px 24px;
+  background: var(--bg);
+}
+.guide-step .step-n { margin-bottom: 0; }
+
+.guide-step-body h3 { font-size: 1rem; font-weight: 600; margin-bottom: 10px; }
+.guide-step-body p { font-size: 0.85rem; color: var(--muted); line-height: 1.65; margin-bottom: 10px; }
+.guide-step-body p:last-child { margin-bottom: 0; }
+.guide-step-body ol { margin: 0 0 10px; padding-left: 20px; display: flex; flex-direction: column; gap: 6px; }
+.guide-step-body ol:last-child { margin-bottom: 0; }
+.guide-step-body li { font-size: 0.85rem; color: var(--muted); line-height: 1.6; }
+.guide-step-body strong { color: var(--text); font-weight: 600; }
+.guide-step-body code {
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  color: var(--text);
+  background: var(--panel-2);
+  border: 1px solid var(--border-2);
+  padding: 1px 6px;
+}
+
+.guide-faq { margin-top: 32px; }
+.guide-faq h3 { font-size: 0.95rem; font-weight: 600; margin-bottom: 16px; }
+.guide-faq dl { display: flex; flex-direction: column; gap: 14px; }
+.guide-faq-item dt { font-size: 0.85rem; font-weight: 600; margin-bottom: 4px; }
+.guide-faq-item dd { font-size: 0.83rem; color: var(--muted); line-height: 1.6; margin: 0; }
+
+@media (max-width: 560px) {
+  .guide-step { grid-template-columns: 1fr; gap: 8px; }
+}
 
 /* ─── Pricing ────────────────────────────────────────────── */
 .pricing-subtitle {
