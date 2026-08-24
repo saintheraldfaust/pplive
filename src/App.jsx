@@ -166,7 +166,7 @@ const plans = [
   },
   {
     name: 'Lifetime',
-    price: '$440',
+    price: '$700',
     period: 'one-time',
     copy: 'Buy once, use forever. No renewals.',
     perks: ['Everything in Yearly', 'Lifetime updates', 'VIP support', 'Best value'],
