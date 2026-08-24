@@ -1,9 +1,19 @@
 import { useState } from 'react';
 
 const BACKEND_URL = 'https://purplefinger-chimera.onrender.com';
-const DOWNLOAD_URL = `${BACKEND_URL}/download`;
+const DOWNLOAD_URLS = {
+  win: `${BACKEND_URL}/download`,
+  mac: `${BACKEND_URL}/download/mac`,
+};
+const PLATFORM_LABEL = { win: 'Windows', mac: 'macOS' };
 const TELEGRAM_SUPPORT = 'https://t.me/PurpleFsupport';
 const TELEGRAM_CHANNEL = 'https://t.me/purplefinger21';
+
+function detectPlatform() {
+  if (typeof navigator === 'undefined') return 'win';
+  const ua = `${navigator.userAgent || ''} ${navigator.platform || ''}`.toLowerCase();
+  return /mac|iphone|ipad/.test(ua) ? 'mac' : 'win';
+}
 
 const features = [
   {
@@ -36,7 +46,7 @@ const steps = [
   {
     n: '01',
     title: 'Download the app',
-    body: 'Windows installer, signed builds shipped regularly.',
+    body: 'Windows and macOS installers, new builds shipped regularly.',
   },
   {
     n: '02',
@@ -89,11 +99,27 @@ const paymentOptions = [
   },
 ];
 
-function DownloadButton({ className, children }) {
+function DownloadButton({ className, platform, children }) {
+  const resolved = platform || detectPlatform();
   return (
-    <a className={className} href={DOWNLOAD_URL}>
+    <a className={className} href={DOWNLOAD_URLS[resolved]}>
       {children}
     </a>
+  );
+}
+
+function PlatformDownloadGroup({ primaryClassName = 'btn btn-primary' }) {
+  const primary = detectPlatform();
+  const secondary = primary === 'mac' ? 'win' : 'mac';
+  return (
+    <div className="platform-download-group">
+      <DownloadButton className={primaryClassName} platform={primary}>
+        Download for {PLATFORM_LABEL[primary]}
+      </DownloadButton>
+      <DownloadButton className="platform-alt-link" platform={secondary}>
+        Also available for {PLATFORM_LABEL[secondary]}
+      </DownloadButton>
+    </div>
   );
 }
 
@@ -151,7 +177,7 @@ function App() {
               it straight into your call. No local hardware, no setup beyond a product key.
             </p>
             <div className="hero-actions">
-              <DownloadButton className="btn btn-primary">Download for Windows</DownloadButton>
+              <PlatformDownloadGroup />
               <a className="btn btn-payment" href="#payment">
                 Make payment
               </a>
@@ -159,7 +185,10 @@ function App() {
                 Get a product key ↗
               </a>
             </div>
-            <p className="hero-meta">v1.1.0 · Windows · Product key required</p>
+            <p className="hero-meta">v1.1.0 · Windows &amp; macOS · Product key required</p>
+            <p className="hero-note">
+              macOS build isn't notarized yet. Right-click the app and choose Open the first time.
+            </p>
           </div>
 
           <div className="hero-visual" aria-hidden="true">
@@ -284,7 +313,7 @@ function App() {
             <p>Download the app, message support for a key, start a session.</p>
           </div>
           <div className="cta-actions">
-            <DownloadButton className="btn btn-primary">Download for Windows</DownloadButton>
+            <PlatformDownloadGroup />
             <a className="btn btn-ghost" href={TELEGRAM_CHANNEL} target="_blank" rel="noreferrer">
               Join the channel ↗
             </a>
@@ -297,7 +326,7 @@ function App() {
         <div className="footer-links">
           <a href={TELEGRAM_SUPPORT} target="_blank" rel="noreferrer">Support</a>
           <a href={TELEGRAM_CHANNEL} target="_blank" rel="noreferrer">Channel</a>
-          <a href={DOWNLOAD_URL}>Download</a>
+          <DownloadButton>Download</DownloadButton>
         </div>
       </footer>
     </div>

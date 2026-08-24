@@ -163,11 +163,32 @@ h1 {
 
 .hero-actions .btn { padding: 13px 24px; font-size: 0.88rem; }
 
+.platform-download-group {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+}
+.platform-alt-link {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  color: var(--muted);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+}
+.platform-alt-link:hover { color: var(--text); border-bottom-color: var(--border-2); }
+
 .hero-meta {
   margin-top: 16px;
   font-family: var(--mono);
   font-size: 0.72rem;
   letter-spacing: 0.04em;
+  color: var(--muted-2);
+}
+
+.hero-note {
+  margin-top: 6px;
+  font-size: 0.72rem;
   color: var(--muted-2);
 }
 
